@@ -62,4 +62,14 @@ const verifyJWT = (req, res, next) => {
                 return res.status(403).send({ error: true, message: 'forbidden access' })
             }
 ```
+## 5.3 check the token where data is fetch is done
+```
+    const token = localStorage.getItem('access-token');
+    
+    const res = await fetch(`http://localhost:5000/carts?email=${user?.email}` , {
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            })
+```
 
